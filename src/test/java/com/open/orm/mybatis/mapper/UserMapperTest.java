@@ -28,10 +28,22 @@ public class UserMapperTest {
     public void testInsert() {
         UserDO user = new UserDO();
         user.setUsername(UUID.randomUUID().toString());
-        user.setPassword("nicai");
+        user.setPassword("123456");
         user.setCreateTime(new Date());
         user.setDeleted(0); // 一般情况下，是否删除，可以全局枚举下。
         userMapper.insert(user);
+    }
+
+    @Test
+    public void testInsertBatch() {
+        for (int i = 0; i < 1000; i++) {
+            UserDO user = new UserDO();
+            user.setUsername(UUID.randomUUID().toString());
+            user.setPassword("123456");
+            user.setCreateTime(new Date());
+            user.setDeleted(0); // 一般情况下，是否删除，可以全局枚举下。
+            userMapper.insert(user);
+        }
     }
 
     @Test
