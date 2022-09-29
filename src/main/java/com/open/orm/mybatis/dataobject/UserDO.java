@@ -55,7 +55,7 @@ public class UserDO {
             //1,注册驱动
             Class.forName("com.mysql.cj.jdbc.Driver");
             //2,获取连接
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test001?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC","root","root");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hello?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC","root","root");
             //3,获取语句会话对象,这里我们获取的是预编译处理会话，可以防止SQL注入
             ps = conn.prepareStatement(sql);
             //给占位符? 赋值，setObject() 第一个参数为占位符位置，第二个参数为实际传入的值
