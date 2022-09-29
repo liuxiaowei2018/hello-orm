@@ -24,7 +24,13 @@
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>3.2.0</version>
+            <version>3.4.0</version>
+        </dependency>
+        <!-- mybatis plus version >= 3.4.0 生效-->
+        <dependency>
+            <groupId>com.github.yulichang</groupId>
+            <artifactId>mybatis-plus-join</artifactId>
+            <version>1.2.4</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
