@@ -1,11 +1,6 @@
 package com.open.orm.mybatis.mapper;
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.github.yulichang.query.MPJQueryWrapper;
-import com.github.yulichang.wrapper.MPJLambdaWrapper;
 import com.open.orm.HelloOrmApplication;
-import com.open.orm.mybatis.dataobject.Student;
-import com.open.orm.mybatis.dataobject.UserDO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,8 +12,7 @@ import javax.annotation.Resource;
 /**
  * @author liuxiaowei
  * @date 2022年09月29日 20:31
- * @Description
- * MPJLambdaWrapper 其他功能
+ * @Description MPJLambdaWrapper 其他功能
  * 简单的SQL函数使用：https://gitee.com/best_handsome/mybatis-plus-join/wikis/selectFunc()?sort_id=4082479
  * ON语句多条件支持：https://gitee.com/best_handsome/mybatis-plus-join/wikis/leftJoin?sort_id=3496671
  */
