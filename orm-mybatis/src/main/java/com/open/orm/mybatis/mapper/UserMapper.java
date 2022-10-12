@@ -1,9 +1,7 @@
 package com.open.orm.mybatis.mapper;
 
 import com.open.orm.mybatis.dataobject.UserDO;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.Collection;
 import java.util.List;
@@ -20,14 +18,40 @@ import java.util.List;
 @Mapper
 public interface UserMapper {
 
-    /**
-     * 根据用户名查询用户结果集
-     *
-     * @param username 用户名
-     * @return 查询结果
-     */
-    @Select("SELECT * FROM users WHERE username = #{username}")
-    List<UserDO> findByUsername(@Param("username") String username);
+    @Insert("INSERT INTO users(username, password, create_time) VALUES(#{username}, #{password}, #{createTime})")
+    @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
+    int insertUser(UserDO user);
+
+    @Update(value = {
+            "<script>",
+            "UPDATE users",
+            "<set>",
+            "<if test='username != null'>, username = #{username}</if>",
+            "<if test='password != null'>, password = #{password}</if>",
+            "</set>",
+            "</script>"
+    })
+    int updateByUserId(UserDO user);
+
+    @Delete("DELETE FROM users WHERE id = #{id}")
+    int deleteByUserId(@Param("id") Integer id);
+
+    @Select("SELECT username, password, create_time FROM users WHERE id = #{id}")
+    UserDO selectByIdV1(@Param("id") Integer id);
+
+    @Select("SELECT username, password, create_time FROM users WHERE username = #{username}")
+    UserDO selectByUsernameV1(@Param("username") String username);
+
+    @Select(value = {
+            "<script>",
+            "SELECT username, password, create_time FROM users",
+            "WHERE id IN",
+            "<foreach item='id' collection='ids' separator=',' open='(' close=')' index=''>",
+            "#{id}",
+            "</foreach>",
+            "</script>"
+    })
+    List<UserDO> selectByIdsV1(@Param("ids") Collection<Integer> ids);
 
     /**
      * 保存用户信息
