@@ -1,4 +1,4 @@
-package com.open.orm.mybatis.dataobject;
+package com.open.orm.mybatisplus.dataobject;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;

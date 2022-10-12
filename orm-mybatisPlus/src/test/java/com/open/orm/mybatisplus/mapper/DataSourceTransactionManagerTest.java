@@ -1,9 +1,8 @@
-package com.open.orm.mybatis.mapper;
+package com.open.orm.mybatisplus.mapper;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.open.orm.HelloOrmApplication;
-import com.open.orm.mybatis.dataobject.UserDO;
+import com.open.orm.mybatisplus.dataobject.UserDO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;

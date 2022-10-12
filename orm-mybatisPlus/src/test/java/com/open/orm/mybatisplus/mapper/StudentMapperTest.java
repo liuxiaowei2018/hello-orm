@@ -1,6 +1,7 @@
-package com.open.orm.mybatis.mapper;
+package com.open.orm.mybatisplus.mapper;
 
 import com.open.orm.HelloOrmApplication;
+import com.open.orm.mybatisplus.mapper.StudentMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
