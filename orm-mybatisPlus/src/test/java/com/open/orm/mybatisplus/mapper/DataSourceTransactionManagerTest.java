@@ -19,7 +19,7 @@ import java.util.Random;
 /**
  * @author liuxiaowei
  * @date 2022年09月26日 13:37
- * @Description
+ * @Description 多线程批量操作测试
  */
 @Slf4j
 @RunWith(SpringRunner.class)
