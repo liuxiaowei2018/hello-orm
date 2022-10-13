@@ -71,4 +71,6 @@ public interface UserMapper {
 
     List<UserDO> selectByIds(@Param("ids") Collection<Integer> ids);
 
+    int batchInsert(@Param("list") List<UserDO> list);
+
 }
