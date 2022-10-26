@@ -13,6 +13,7 @@ mybatis-plus:
   global-config:
     db-config:
       id-type: auto # ID 主键自增
+      # 删除时将逻辑删除字段设置为id的值(可以解决唯一索引与逻辑删除冲突问题)
       logic-delete-value: 1 # 逻辑已删除值(默认为 1)
       logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
   mapper-locations: classpath*:mapper/*.xml
