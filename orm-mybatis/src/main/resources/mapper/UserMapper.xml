@@ -36,6 +36,21 @@
         WHERE id = #{id}
     </update>
 
+    <update id="batchUpdateById" parameterType="java.util.List">
+        <foreach collection="list" item="orderDO" index="index" open="" close="" separator=";">
+            update users
+            <set >
+                <if test="orderDO.username != null" >
+                    username = #{orderDO.username},
+                </if>
+                <if test="orderDO.username != null" >
+                    password = #{orderDO.password},
+                </if>
+            </set>
+            where id = #{orderDO.id,jdbcType=INT}
+        </foreach>
+    </update>
+
     <delete id="deleteById" parameterType="Integer">
         DELETE FROM users
         WHERE id = #{id}

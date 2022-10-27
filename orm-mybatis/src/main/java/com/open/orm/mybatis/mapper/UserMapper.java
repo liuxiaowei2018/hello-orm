@@ -73,4 +73,6 @@ public interface UserMapper {
 
     int batchInsert(@Param("list") List<UserDO> list);
 
+    int batchUpdateById(@Param("list") List<UserDO> list);
+
 }
