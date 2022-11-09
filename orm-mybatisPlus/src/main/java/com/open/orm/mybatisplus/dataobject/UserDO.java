@@ -3,6 +3,7 @@ package com.open.orm.mybatisplus.dataobject;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,6 +17,7 @@ import java.util.Date;
  * @Description
  */
 @Data
+@Accessors(chain = true)
 @TableName(value = "users")
 public class UserDO {
 

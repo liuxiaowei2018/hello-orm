@@ -31,29 +31,29 @@ public class DataSourceTransactionManagerTest {
     @Autowired
     private TransactionDefinition transactionDefinition;
     @Autowired
-    private UserMapper userMapper;
+    private UserDOMapper userDOMapper;
 
     @Test
     public void updateUser() {
         // 自动事务提交 2s143ms
-        List<UserDO> all = userMapper.selectList(new LambdaQueryWrapper<UserDO>().last("limit 1000000"));
+        List<UserDO> all = userDOMapper.selectList(new LambdaQueryWrapper<UserDO>().last("limit 1000000"));
         all.forEach(s -> {
             String newUser = "Test_" + new Random().nextInt(100);
             s.setUsername(newUser);
-            userMapper.updateById(s);
+            userDOMapper.updateById(s);
         });
     }
 
     @Test
     public void updateUserByTransaction() {
         // 手动事务提交 866ms [有效提高操作效率]
-        List<UserDO> all = userMapper.selectList(new LambdaQueryWrapper<UserDO>().last("limit 1000000"));
+        List<UserDO> all = userDOMapper.selectList(new LambdaQueryWrapper<UserDO>().last("limit 1000000"));
         TransactionStatus transaction = dataSourceTransactionManager.getTransaction(transactionDefinition);
         try {
             all.forEach(s -> {
                 String newUser = "Test_" + new Random().nextInt(100);
                 s.setUsername(newUser);
-                userMapper.updateById(s);
+                userDOMapper.updateById(s);
             });
             dataSourceTransactionManager.commit(transaction);
         } catch (Exception e) {

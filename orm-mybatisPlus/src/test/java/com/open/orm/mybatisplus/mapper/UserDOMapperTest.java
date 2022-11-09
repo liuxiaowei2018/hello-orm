@@ -21,10 +21,10 @@ import java.util.UUID;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = HelloOrmApplication.class)
-public class UserMapperTest {
+public class UserDOMapperTest {
 
     @Autowired
-    private UserMapper userMapper;
+    private UserDOMapper userDOMapper;
 
     @Test
     public void testInsert() {
@@ -33,7 +33,7 @@ public class UserMapperTest {
         user.setPassword("123456");
         user.setCreateTime(new Date());
         user.setDeleted(0); // 一般情况下，是否删除，可以全局枚举下。
-        userMapper.insert(user);
+        userDOMapper.insert(user);
     }
 
     @Test
@@ -44,7 +44,7 @@ public class UserMapperTest {
             user.setPassword("123456");
             user.setCreateTime(new Date());
             user.setDeleted(0); // 一般情况下，是否删除，可以全局枚举下。
-            userMapper.insert(user);
+            userDOMapper.insert(user);
         }
     }
 
@@ -53,22 +53,22 @@ public class UserMapperTest {
         UserDO updateUser = new UserDO();
         updateUser.setId(1);
         updateUser.setPassword("xxx");
-        userMapper.updateById(updateUser);
+        userDOMapper.updateById(updateUser);
     }
 
     @Test
     public void testDeleteById() {
-        userMapper.deleteById(2);
+        userDOMapper.deleteById(2);
     }
 
     @Test
     public void testSelectById() {
-        userMapper.selectById(1);
+        userDOMapper.selectById(1);
     }
 
     @Test
     public void testSelectByUsername() {
-        userMapper.selectByUsername("xxx");
+        userDOMapper.selectByUsername("xxx");
     }
 
     @Test
@@ -76,7 +76,7 @@ public class UserMapperTest {
         IPage<UserDO> page = new Page<>(1, 10);
         // 临时 Demo ，实际不建议这么写
         Date createTime = new Date(2018 - 1990, Calendar.FEBRUARY, 24);
-        page = userMapper.selectPageByCreateTime(page, createTime);
+        page = userDOMapper.selectPageByCreateTime(page, createTime);
         System.out.println("users：" + page.getRecords().size());
     }
 
